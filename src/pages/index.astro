@@ -1,13 +1,51 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import teams from "../const/teams";
 ---
 
 <Layout title="Premier League">
-	<div class="grid grid-cols-4">
-        <div class="bg-green-200 col-span-3">1</div>
-        <div class="bg-green-400 col-span-1">2</div>
+  <div class="grid grid-cols-4 mx-20">
+    <div class="col-span-3 grid grid-cols-2">
+      <div class="col-span-1">
+        <div class="flex flex-wrap gap-x-10 pt-14">
+          {
+            teams
+              .slice(0, 2)
+              .map((team) => (
+                <img src={team.logo} alt={team.name} class="size-14" />
+              ))
+          }
+        </div>
+        <h1 class="text-5xl mt-16">
+          There is only one andorid Erling Haaland is the maximum goalscored
+        </h1>
+        <p class="mt-4 text-gray-500">
+          Erling Haaland never ceases to amaze. Every so often, the Norwegian
+          rises up inspired and catches the attention of the entire soccer
+          planet.
+        </p>
+      </div>
+      <div class="col-span-1 relative flex justify-center items-center">
+        <div class="size-[550px] ml-10 bg-blue-400 rounded-full absolute z-0">
+        </div>
+        <div class="relative z-10">
+          <img
+            src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f50a06a8-6555-4d39-a69d-54c3969d37c2/dgjgn0f-08655761-ef07-4088-9f80-2dc199f2f937.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y1MGEwNmE4LTY1NTUtNGQzOS1hNjlkLTU0YzM5NjlkMzdjMlwvZGdqZ24wZi0wODY1NTc2MS1lZjA3LTQwODgtOWY4MC0yZGMxOTlmMmY5MzcucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.wqoyZes8wopeNFTPkcS2nqdDWkfYvPuy5jXnYgHqE_0"
+            alt=""
+            class="z-10 w-[550px]"
+          />
+        </div>
+      </div>
     </div>
+    <div class="col-span-1 flex flex-col gap-4 my-10">
+      <div class="h-3/5 bg-gray-800 rounded-md">table1</div>
+      <div class="h-2/5 bg-gray-800 rounded-md">table2</div>
+    </div>
+  </div>
+  <div class="bg-gray-800 flex justify-between items-center mx-20">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+  </div>
 </Layout>
-
-
