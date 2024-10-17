@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import teams from "../const/teams";
-import Table from '../components/Table'
+import Table from "../components/Table";
 ---
 
 <Layout title="Premier League">
@@ -39,8 +39,8 @@ import Table from '../components/Table'
       </div>
     </div>
     <div class="col-span-1 flex flex-col gap-4 my-10">
-      <div class="h-3/5 bg-gray-800 rounded-md"><Table /></div>
-      <div class="h-2/5 bg-gray-800 rounded-md"><button class="btn"></button></div>
+      <div class="h-3/5 rounded-md"><Table client:load/></div>
+      <div class="h-2/5 rounded-md"></div>
     </div>
   </div>
   <div class="bg-gray-800 flex justify-between items-center mx-20">

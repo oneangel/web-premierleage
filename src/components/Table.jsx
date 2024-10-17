@@ -1,33 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
+import teams from "../const/teams";
 
 const Table = () => {
+  const [activeTab, setActiveTab] = useState(0); // Tab 1 is active initially
+  const teamsPerTab = 5;
+
+  // Calculate how many tabs we need
+  const totalTabs = Math.ceil(teams.length / teamsPerTab);
+
+  // Get the teams for the current tab
+  const getTeamsForTab = (tabIndex) => {
+    const startIndex = tabIndex * teamsPerTab;
+    const endIndex = startIndex + teamsPerTab;
+    return teams.slice(startIndex, endIndex);
+  };
+
   return (
-    <div className="overflow-x-auto">
-      <table className="table">
-        <tbody>
-          {/* row 1 */}
-          <tr>
-            <td>
-              <div className="flex items-center gap-3">
+    <>
+      <div role="tablist" className="tabs tabs-boxed">
+        {[...Array(totalTabs)].map((_, index) => (
+          <a
+            key={index}
+            role="tab"
+            className={`tab ${activeTab === index ? "tab-active" : ""}`}
+            onClick={() => setActiveTab(index)}
+          >
+            Pagina {index + 1}
+          </a>
+        ))}
+      </div>
+      <div className="overflow-x-auto flex flex-wrap gap-y-4">
+        {getTeamsForTab(activeTab).map((team, index) => (
+          <div key={index} className="stats shadow w-full bg-gray-800">
+            <div className="stat">
+              <div className="stat-figure text-secondary">
                 <div className="avatar">
-                  <div className="mask mask-squircle w-12 h-12">
-                    <img
-                      src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png"
-                      alt="Avatar Tailwind CSS Component"
-                    />
+                  <div className="w-16">
+                    <img src={team.logo} alt={team.name} />
                   </div>
                 </div>
-                <div>
-                  <div className="font-bold">Hart Hagerty</div>
-                  <div className="text-sm opacity-50">United States</div>
-                </div>
               </div>
-            </td>
-            <td>Purple</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+              <div className="stat-value">{team.posibility}%</div>
+              <div className="stat-title">Tasks done</div>
+              <div className="stat-desc text-secondary">31 tasks remaining</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };
 
